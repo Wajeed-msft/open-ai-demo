@@ -1,0 +1,31 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+            "vmName": {
+                "defaultValue": "GenevaMonitoring Resource",
+                "type": "string"
+            }
+        },
+    "functions": [],    
+    "resources": [
+                {
+        "name": "[concat(parameters('vmName'), '/Microsoft.Azure.Geneva.GenevaMonitoring')]",
+        "type": "Microsoft.Compute/virtualMachines/extensions",
+        "location": "[resourceGroup().location]",
+        "apiVersion": "2019-03-01",
+        "properties": {
+            "publisher": "Microsoft.Azure.Geneva",
+            "type": "GenevaMonitoring",
+            "typeHandlerVersion": "2.0",
+            "enableAutomaticUpgrade": true,
+            "autoUpgradeMinorVersion": true,
+            "settings": {},
+            "protectedSettings": {}
+        }
+        }
+    ],
+    "outputs": {}
+}
+
+
